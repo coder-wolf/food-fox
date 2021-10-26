@@ -1,28 +1,29 @@
-1. welcome
-    2 texts
-    getStartedButton (probably reusable from parent #1)
-2. home
-    foodTypeWidget
-    resturantWidget
-    searchWidget
-    avatar
+1. [x]welcome
+    [x]2 texts
+    [x]getStartedButton (probably reusable from parent #1)
+
+2. []home
     some text
-3. food
+    avatar
+    resturantWidget
+    foodTypeWidget
+    searchWidget
+3. []food
     topBarWidget
     ingredientsWidget
     detailsListWidget list of below widget
         singleDetailWidget
     sizeWidget
     countWidget (reusable)
-4. resturant
+4. []resturant
     foodWidget
     resturantNameWidget
     topTextWidget
-5. cart
+5. []cart
     itemWidget
     totalPriceWidget
     checkoutButton (probably reusable from parent #1)
-6. checkout
+6. []checkout
     topBar
     cartList
     payCashButton
