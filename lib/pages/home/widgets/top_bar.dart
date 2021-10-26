@@ -8,7 +8,13 @@ class topBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 14, right: 14, top: 7),
+      padding: EdgeInsets.only(
+        left: MediaQuery.of(context).size.width * (30 / 500),
+        // right: 14,
+        right: MediaQuery.of(context).size.width * (30 / 500),
+        // top: 7,
+        top: MediaQuery.of(context).size.width * (20 / 500),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,15 +25,17 @@ class topBar extends StatelessWidget {
                 TextSpan(
                     text: "Good morning, ",
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 21,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.black,
+                      fontSize: MediaQuery.of(context).size.width * (27 / 500),
                     )),
                 TextSpan(
                     text: "John",
                     /* TODO change with variable */
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 21,
+                      // fontSize: 21,
+                      fontSize: MediaQuery.of(context).size.width * (27 / 500),
                       color: Colors.black,
                     )),
               ],
@@ -35,7 +43,7 @@ class topBar extends StatelessWidget {
           ),
           CircleAvatar(
             backgroundColor: Colors.black,
-            radius: (MediaQuery.of(context).size.width / 200) * 13,
+            radius: (MediaQuery.of(context).size.width / 200) * 12.6,
             foregroundImage: AssetImage("images/avatar.png"),
           ),
         ],

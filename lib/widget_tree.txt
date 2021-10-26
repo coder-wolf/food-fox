@@ -3,32 +3,32 @@
     [x]getStartedButton (probably reusable from parent #1)
 
 2. []home
-    some text
-    avatar
-    resturantWidget
-    foodTypeWidget
-    searchWidget
+    [x]some text
+    [x]avatar
+    []resturantWidget
+    []foodTypeWidget
+    []searchWidget
 3. []food
-    topBarWidget
-    ingredientsWidget
-    detailsListWidget list of below widget
-        singleDetailWidget
-    sizeWidget
-    countWidget (reusable)
+    []topBarWidget
+    []ingredientsWidget
+    []detailsListWidget list of below widget
+    []    singleDetailWidget
+    []sizeWidget
+    []countWidget (reusable)
 4. []resturant
-    foodWidget
-    resturantNameWidget
-    topTextWidget
+    []foodWidget
+    []resturantNameWidget
+    []topTextWidget
 5. []cart
-    itemWidget
-    totalPriceWidget
-    checkoutButton (probably reusable from parent #1)
+    []itemWidget
+    []totalPriceWidget
+    []checkoutButton (probably reusable from parent #1)
 6. []checkout
-    topBar
-    cartList
-    payCashButton
-    deliveryTime (reusable from parent #2)
-    deliveryAddress (reusable from parent #2)
+    []topBar
+    []cartList
+    []payCashButton
+    []deliveryTime (reusable from parent #2)
+    []deliveryAddress (reusable from parent #2)
 
 
 welcome screen --> home
