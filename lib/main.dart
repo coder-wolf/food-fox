@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/home/home_page.dart';
 import 'package:food_delivery/pages/welcome/welcome_page.dart';
 
 main() => runApp(MyApp());
@@ -8,7 +9,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+      // home: WelcomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        '/home': (context) => HomeScreen(),
+        
+      },
     );
   }
 }

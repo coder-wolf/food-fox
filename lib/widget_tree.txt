@@ -29,3 +29,6 @@
     payCashButton
     deliveryTime (reusable from parent #2)
     deliveryAddress (reusable from parent #2)
+
+
+welcome screen --> home
