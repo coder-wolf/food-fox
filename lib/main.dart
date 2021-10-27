@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:food_delivery/constants.dart';
+import 'package:food_delivery/pages/food/food_page.dart';
 import 'package:food_delivery/pages/home/home_page.dart';
+import 'package:food_delivery/pages/resturant/resturant_page.dart';
 import 'package:food_delivery/pages/welcome/welcome_page.dart';
 
-main() => runApp(MyApp());
+main() {
+  // SystemChrome.setPreferredOrientations(
+  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,10 +20,20 @@ class MyApp extends StatelessWidget {
       // home: WelcomeScreen(),
       initialRoute: '/',
       routes: {
-        '/': (context) => WelcomeScreen(),
+        '/': (context) => FoodDeliveryApp(),
         '/home': (context) => HomeScreen(),
-        
+        '/resturant': (context) => ResturentScreen(),
+        '/food': (context) => FoodScreen(),
       },
     );
+  }
+}
+
+class FoodDeliveryApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    w = MediaQuery.of(context).size.width / 1000;
+
+    return WelcomeScreen();
   }
 }

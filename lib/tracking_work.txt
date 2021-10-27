@@ -2,23 +2,27 @@
     [x]2 texts
     [x]getStartedButton (probably reusable from parent #1)
 
-2. []home
+2. [x]home
     [x]some text
     [x]avatar
-    []resturantWidget
-    []foodTypeWidget
-    []searchWidget
-3. []food
-    []topBarWidget
-    []ingredientsWidget
-    []detailsListWidget list of below widget
-    []    singleDetailWidget
-    []sizeWidget
-    []countWidget (reusable)
-4. []resturant
+    [x]resturantWidget
+    [x]foodTypeWidget
+    [x]searchWidget
+    [] (later) add some animation ?
+
+3. []resturant
     []foodWidget
     []resturantNameWidget
     []topTextWidget
+
+4. []food
+    []topBarWidget
+    []ingredientsWidget
+    []detailsListWidget list of below widget
+    []|___singleDetailWidget
+    []sizeWidget
+    []countWidget (reusable)
+
 5. []cart
     []itemWidget
     []totalPriceWidget

@@ -1,0 +1,1 @@
+// TODO single detail widget

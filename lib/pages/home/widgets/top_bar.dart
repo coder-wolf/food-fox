@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/constants.dart';
 
 class topBar extends StatelessWidget {
   const topBar({
@@ -27,15 +28,15 @@ class topBar extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w300,
                       color: Colors.black,
-                      fontSize: MediaQuery.of(context).size.width * (27 / 500),
+                      fontSize: 68 * w,
                     )),
                 TextSpan(
                     text: "John",
                     /* TODO change with variable */
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       // fontSize: 21,
-                      fontSize: MediaQuery.of(context).size.width * (27 / 500),
+                      fontSize: 68 * w,
                       color: Colors.black,
                     )),
               ],

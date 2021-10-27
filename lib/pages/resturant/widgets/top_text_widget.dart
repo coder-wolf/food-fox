@@ -1,4 +1,4 @@
-// DOING create top text widget
+// DONE create top text widget
 
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
@@ -11,20 +11,21 @@ class TopTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 90 * w),
+        SizedBox(height: 60 * w),
         Text("Choose what you",
             style: TextStyle(
-              fontSize: 57 * w,
+              fontSize: 62 * w,
             )),
         Text(
           "want to eat today",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 57 * w,
+            fontSize: 60.5 * w,
           ),
         ),
-        SizedBox(height: 90 * w),
+        SizedBox(height: 80 * w),
       ],
     );
   }
