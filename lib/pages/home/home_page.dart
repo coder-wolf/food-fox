@@ -9,61 +9,69 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: Color(0xfffcfeff),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                topBar(),
-                SizedBox(
-                  height: MediaQuery.of(context).size.width * (11 / 100),
-                ),
-                searchWidget(),
-                SizedBox(height: MediaQuery.of(context).size.width * 9 / 100),
-                foodTypesListView(),
-                resturantWidget(),
-                resturantWidget(
-                  name: "Pizza Hut",
-                  logo: "images/pizza_hut.png",
-                ),
-                resturantWidget(
-                  name: "KFC",
-                  logo: "images/kfc.png",
-                ),
-                resturantWidget(),
-                resturantWidget(
-                  name: "Pizza Hut",
-                  logo: "images/pizza_hut.png",
-                ),
-                resturantWidget(
-                  name: "KFC",
-                  logo: "images/kfc.png",
-                ),
-                resturantWidget(),
-                resturantWidget(
-                  name: "Pizza Hut",
-                  logo: "images/pizza_hut.png",
-                ),
-                resturantWidget(
-                  name: "KFC",
-                  logo: "images/kfc.png",
-                ),
-                resturantWidget(),
-                resturantWidget(
-                  name: "Pizza Hut",
-                  logo: "images/pizza_hut.png",
-                ),
-                resturantWidget(
-                  name: "KFC",
-                  logo: "images/kfc.png",
-                ),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: Color(0xfffcfeff),
+          ),
+          SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  topBar(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width * (11 / 100),
+                  ),
+                  searchWidget(),
+                  SizedBox(height: MediaQuery.of(context).size.width * 9 / 100),
+                  foodTypesListView(),
+                  Column(
+                    children: [
+                      resturantWidget(),
+                      resturantWidget(
+                        name: "Pizza Hut",
+                        logo: "images/pizza_hut.png",
+                      ),
+                      resturantWidget(
+                        name: "KFC",
+                        logo: "images/kfc.png",
+                      ),
+                      resturantWidget(),
+                      resturantWidget(
+                        name: "Pizza Hut",
+                        logo: "images/pizza_hut.png",
+                      ),
+                      resturantWidget(
+                        name: "KFC",
+                        logo: "images/kfc.png",
+                      ),
+                      resturantWidget(),
+                      resturantWidget(
+                        name: "Pizza Hut",
+                        logo: "images/pizza_hut.png",
+                      ),
+                      resturantWidget(
+                        name: "KFC",
+                        logo: "images/kfc.png",
+                      ),
+                      resturantWidget(),
+                      resturantWidget(
+                        name: "Pizza Hut",
+                        logo: "images/pizza_hut.png",
+                      ),
+                      resturantWidget(
+                        name: "KFC",
+                        logo: "images/kfc.png",
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

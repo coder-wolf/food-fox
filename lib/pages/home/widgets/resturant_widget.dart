@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants.dart';
 
+// FIX this widget
 class resturantWidget extends StatelessWidget {
   resturantWidget({
     Key? key,
@@ -21,7 +22,8 @@ class resturantWidget extends StatelessWidget {
         padding: EdgeInsets.only(
             left: 70 * w, right: 70 * w, top: 25 * w, bottom: 25 * w),
         child: Container(
-          width: double.infinity,
+          width: double.infinity, // checked, no problem maybe
+          // width: w * 960,
           height: 430 * w,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -69,7 +71,9 @@ class resturantWidget extends StatelessWidget {
                             ),
                           ]),
                       Text(
-                        name == null ? "Dominos Pizza" : name, // TODO add overflow handling, with 1 alowed line, maybe dotted overflow?
+                        name == null
+                            ? "Dominos Pizza"
+                            : name, // TODO add overflow handling, with 1 alowed line, maybe dotted overflow?
                         style: TextStyle(
                           fontSize: 45 * w,
                           fontWeight: FontWeight.w500,

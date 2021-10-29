@@ -1,1 +1,0 @@
-// TODO foood details widget

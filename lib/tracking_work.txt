@@ -10,10 +10,10 @@
     [x]searchWidget
     [] (later) add some animation ?
 
-3. []resturant
-    []foodWidget
-    []resturantNameWidget
-    []topTextWidget
+3. [x]resturant
+    [x]foodWidget
+    [x]resturantNameWidget
+    [x]topTextWidget
 
 4. []food
     []topBarWidget

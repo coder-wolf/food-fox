@@ -1,8 +1,11 @@
 // working food page -- create
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/food/widgets/count_widget.dart';
 
 import '../../constants.dart';
+import 'widgets/single_detail_widget.dart';
+import 'widgets/size_widget.dart';
 
 class FoodScreen extends StatelessWidget {
   @override
@@ -10,8 +13,6 @@ class FoodScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // DONE topbar
-        // titleSpacing: 0,
-        // automaticallyImplyLeading: false,
         backgroundColor: Color(0xfffcfeff),
         shadowColor: Colors.transparent,
         leading: Padding(
@@ -54,26 +55,31 @@ class FoodScreen extends StatelessWidget {
             padding: EdgeInsets.all(18 * w),
             // padding: EdgeInsets.only(
             //     top: 18 * w, left: 18 * w, right: 50 * w, bottom: 18 * w),
-            child: Container(
-              width: 120 * w,
-              height: 120 * w,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(
-                    MediaQuery.of(context).size.width * (3 / 100)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blueGrey.withOpacity(0.05),
-                    spreadRadius: 2 * w,
-                    blurRadius: 20 * w,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, "/cart");
+              },
+              child: Container(
+                width: 120 * w,
+                height: 120 * w,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                      MediaQuery.of(context).size.width * (3 / 100)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blueGrey.withOpacity(0.05),
+                      spreadRadius: 2 * w,
+                      blurRadius: 20 * w,
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.shopping_bag_outlined,
+                    color: Colors.black,
+                    size: 60 * w,
                   ),
-                ],
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.shopping_bag_outlined,
-                  color: Colors.black,
-                  size: 60 * w,
                 ),
               ),
             ),
@@ -85,82 +91,101 @@ class FoodScreen extends StatelessWidget {
         width: double.infinity,
         color: Color(0xfffcfeff),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(left: 70 * w, right: 70 * w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // doing text
-                Center(
-                  child: Text(
-                    "Salami, chilli papers, tomatoes,\n oregano, basil",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 40 * w,
+          child: Stack(
+            children: [
+              Positioned(
+                right: -180 * w,
+                top: 320 * w,
+                child: SizedBox(
+                  width: 730 * w,
+                  height: 730 * w,
+                  child: Image(
+                    image: AssetImage(
+                      "images/pepperoni_pizza.png",
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 90 * w,
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 70 * w, left: 70 * w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 37 * w),
+                    Center(
+                      child: Text(
+                        "Salami, chilli papers, tomatoes,\n oregano, basil",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 40 * w,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 130 * w,
+                    ),
+                    Text(
+                      "\$8.50",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 73 * w,
+                          color: Colors.black),
+                    ),
+                    SizedBox(
+                      height: 100 * w,
+                    ),
+                    SingleDetail(title: "Calories", data: "750 calories"),
+                    SingleDetail(title: "Weight", data: "450 gm"),
+                    SingleDetail(title: "Delivery", data: "45 min"),
+                    SizedBox(
+                      height: 60 * w,
+                    ),
+                    Row(
+                      children: [
+                        SizeWidget(
+                          isSelected: true,
+                        ),
+                        SizeWidget(
+                          size: "M",
+                        ),
+                        SizeWidget(
+                          size: "L",
+                        ),
+                      ],
+                    ),
+                    CountWidget(),
+                    Padding(
+                      padding: EdgeInsets.only(top: 150 * w),
+                      child: GestureDetector(
+                        onTap: () {
+                          // TODO nevigate to cart?
+                          // TODO add to cart
+                          // TODO show go to cart button?
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 140 * w,
+                          decoration: BoxDecoration(
+                              color: Colors.red[400],
+                              borderRadius: BorderRadius.circular(35 * w)),
+                          child: Center(
+                            child: Text(
+                              "Add to cart",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  "\$8.50",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 60 * w,
-                      color: Colors.red),
-                ),
-                SizedBox(
-                  height: 40 * w,
-                ),
-                SingleInfo(title: "Calories", data: "750 calories"),
-                SingleInfo(title: "Weight", data: "450 gm"),
-                SingleInfo(title: "Delivery", data: "45 min"),
-                // TODO size
-                // TODO count
-                //   ],
-                // )
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class SingleInfo extends StatelessWidget {
-  SingleInfo({Key? key, this.title, this.data}) : super(key: key);
-
-  String? title;
-  String? data;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(bottom: 50 * w),
-          child: Text(
-            title == null ? "Calories" : title.toString(),
-            style: TextStyle(
-              fontSize: 47 * w,
-              color: Colors.grey[600],
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            data == null ? "750 Calories" : data.toString(),
-            style: TextStyle(
-              fontSize: 45 * w,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
