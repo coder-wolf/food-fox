@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/services/login.dart';
-
+import 'package:food_delivery/services/register.dart';
 import '../../constants.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController fnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  var loginStatus = false;
+  TextEditingController confirmPasswordController = TextEditingController();
+  var regStatus = false;
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -37,6 +40,26 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: EdgeInsets.only(left: 40 * w, right: 40 * w),
             child: TextField(
+              controller: fnameController,
+              decoration: InputDecoration(
+                hintText: 'Name',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(w * 50),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 70 * w,
+          ),
+          // textfield for password
+          Padding(
+            padding: EdgeInsets.only(left: 40 * w, right: 40 * w),
+            child: TextField(
               controller: emailController,
               decoration: InputDecoration(
                 hintText: 'Email',
@@ -57,10 +80,52 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: EdgeInsets.only(left: 40 * w, right: 40 * w),
             child: TextField(
+              controller: phoneController,
+              decoration: InputDecoration(
+                hintText: 'Phone',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(w * 50),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 70 * w,
+          ),
+          // textfield for password
+          Padding(
+            padding: EdgeInsets.only(left: 40 * w, right: 40 * w),
+            child: TextField(
               controller: passwordController,
-              obscureText: true, // TODO change to true
+              obscureText: true,
               decoration: InputDecoration(
                 hintText: 'Password',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(w * 50),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 70 * w,
+          ),
+          // textfield for password
+
+          Padding(
+            padding: EdgeInsets.only(left: 40 * w, right: 40 * w),
+            child: TextField(
+              controller: confirmPasswordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: 'Confirm Password',
                 hintStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18,
@@ -80,12 +145,17 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               child: MaterialButton(
                 onPressed: () async {
-                  var loginStatus = await login(
-                      emailController.text, passwordController.text);
+                  var regStatus = await register(
+                    fnameController.text,
+                    emailController.text,
+                    phoneController.text,
+                    passwordController.text,
+                    confirmPasswordController.text,
+                  );
                   setState(() {
-                    this.loginStatus = loginStatus;
+                    this.regStatus = regStatus;
                   });
-                  if (loginStatus) {
+                  if (regStatus) {
                     Navigator.pushNamedAndRemoveUntil(
                         context, "/home", (route) => false);
                   } else {
@@ -98,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(80 * w),
                 ),
                 child: const Text(
-                  'Login',
+                  'Register',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,

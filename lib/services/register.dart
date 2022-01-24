@@ -1,14 +1,19 @@
+// https://food-del-app.herokuapp.com/reg
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<bool> login(String email, String password) async {
+Future<bool> register(fname, email, phone, password, confirmPass) async {
   Map data = {
+    'fullname': fname,
+    'email': email,
     "phone": email,
     "password": password,
+    "confirmpassword": confirmPass,
   };
   var body = json.encode(data);
   var response = await http.post(
-      Uri.parse("https://food-del-app.herokuapp.com/login"),
+      Uri.parse("https://food-del-app.herokuapp.com/reg"),
       body: body,
       headers: {
         "Content-Type": "application/json",
@@ -16,11 +21,11 @@ Future<bool> login(String email, String password) async {
       });
   var jsonData = json.decode(response.body);
   print(jsonData);
-  if (jsonData['Message'] == 'Login successful!') {
-    print("SUCCESS");
+  if (jsonData['Message'] == 'Signup was successful!') {
+    print("Registered");
     return true;
   } else {
-    print("FAILED");
+    print(jsonData['Message']);
     return false;
   }
 }

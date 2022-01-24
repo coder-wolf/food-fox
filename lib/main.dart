@@ -8,6 +8,8 @@ import 'package:food_delivery/pages/resturant/resturant_page.dart';
 import 'package:food_delivery/pages/welcome/welcome_page.dart';
 
 import 'pages/login/login_page.dart';
+import 'pages/login_failed/login_failed_page.dart';
+import 'pages/register/register_page.dart';
 
 main() {
   // SystemChrome.setPreferredOrientations(
@@ -20,10 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/register',
       routes: {
         '/': (context) => FoodDeliveryApp(),
         '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
+        '/failed': (context) => LoginFailedPage(),
         '/init': (context) => WelcomeScreen(),
         '/home': (context) => HomeScreen(),
         '/resturant': (context) => ResturentScreen(),
