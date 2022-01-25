@@ -30,6 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
         color: Color(0xffFEFFFF),
         height: double.infinity,
         child: Column(children: [
+          SizedBox(height: 43 * w),
           Spacer(flex: 2),
           Image(
             image: AssetImage("images/foodfox.png"),
