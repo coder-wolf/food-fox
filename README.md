@@ -1,5 +1,26 @@
 # FoodFox - cause panda's got fat
 
-design credit(stolen 🤫🤐): thanks [blacklead studio](https://dribbble.com/shots/13944948-Food-Delivery-Mobile-App/attachments/5556381?mode=media)
+Instructions for running this project on local machine :
+Make sure, you have the flutter sdk and android sdk (for android version) or Xcode and ios emulator (for ios version) installed on your system.
+Web version is not ready yet. But you can run with a potrait browser window.
+
+Download flutter from [here](flutter.dev)
+Android sdk from [here](https://developer.android.com/studio)
+
+Open up your prefered emulator.
+Then cd (change directory) on your terminal into the project directory of your computer.
+Then first run:
+```
+flutter pub get
+```
+Now,
+```
+flutter run
+```
+If everything works as they're supposed to, the app should be starting up on the emulator now.
+
+Enjoy.
+
+design credit(taken from dribbble): thanks [blacklead studio](https://dribbble.com/shots/13944948-Food-Delivery-Mobile-App/attachments/5556381?mode=media)
 
 ![original UI](https://cdn.dribbble.com/users/3537662/screenshots/13944948/media/03f1416019bc41d680de5e66adf3a1ba.png)
