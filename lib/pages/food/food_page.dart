@@ -1,13 +1,18 @@
 // working food page -- create
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/model/food.dart';
 import 'package:food_delivery/pages/food/widgets/count_widget.dart';
 
 import '../../constants.dart';
 import 'widgets/single_detail_widget.dart';
 import 'widgets/size_widget.dart';
 
-class FoodScreen extends StatelessWidget {
+class FoodPage extends StatelessWidget {
+  FoodPage(this.foodObject);
+
+  Food foodObject;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,20 +35,28 @@ class FoodScreen extends StatelessWidget {
                   spreadRadius: 2 * w,
                   blurRadius: 20 * w,
                 ),
-              ],
+              ], // TODO fix the shadow, make it lighter.
             ),
             child: Center(
-              child: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: Colors.black,
-                size: 60 * w,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(left: w * 25, right: w * 25),
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Colors.black,
+                    size: 60 * w,
+                  ),
+                ),
               ),
             ),
           ),
         ),
         title: Center(
           child: Text(
-            "Pepperoni Pizza",
+            foodObject.name, //"Pepperoni Pizza",
             style: TextStyle(
               color: Colors.black,
               fontSize: 45 * w,
@@ -99,9 +112,14 @@ class FoodScreen extends StatelessWidget {
                 child: SizedBox(
                   width: 730 * w,
                   height: 730 * w,
-                  child: Image(
-                    image: AssetImage(
-                      "images/pepperoni_pizza.png",
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                            MediaQuery.of(context).size.width * (50 / 100)),
+                        topLeft: Radius.circular(
+                            MediaQuery.of(context).size.width * (15 / 100))),
+                    child: Image(
+                      image: NetworkImage(foodObject.imageLink),
                     ),
                   ),
                 ),
@@ -114,7 +132,9 @@ class FoodScreen extends StatelessWidget {
                     SizedBox(height: 37 * w),
                     Center(
                       child: Text(
-                        "Salami, chilli papers, tomatoes,\n oregano, basil",
+                        foodObject
+                            .foodMajorCategory[0] // TODO replace 0 with index
+                            .ingredients, //"Salami, chilli papers, tomatoes,\n oregano, basil",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.grey,
@@ -127,7 +147,7 @@ class FoodScreen extends StatelessWidget {
                       height: 130 * w,
                     ),
                     Text(
-                      "\$8.50",
+                      "\$" + foodObject.price,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 73 * w,
@@ -136,9 +156,17 @@ class FoodScreen extends StatelessWidget {
                     SizedBox(
                       height: 100 * w,
                     ),
-                    SingleDetail(title: "Calories", data: "750 calories"),
-                    SingleDetail(title: "Weight", data: "450 gm"),
-                    SingleDetail(title: "Delivery", data: "45 min"),
+                    SingleDetail(
+                        title: "Calories",
+                        data: foodObject.foodMajorCategory[0]
+                            .calories // TODO replace 0 with index
+                        ),
+                    SingleDetail(
+                        title: "Weight",
+                        data: foodObject.foodMajorCategory[0].weight),
+                    SingleDetail(
+                        title: "Delivery",
+                        data: "45 min"), // TODO replace fixed value
                     SizedBox(
                       height: 60 * w,
                     ),

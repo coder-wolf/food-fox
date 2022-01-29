@@ -26,7 +26,8 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         color: Color(0xffFEFFFF),
         height: double.infinity,
-        child: Column(children: [
+        width: double.infinity,
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
           Spacer(flex: 2),
           Image(
             image: AssetImage("images/foodfox.png"),
@@ -72,9 +73,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Spacer(flex: 5),
-          // button for login
           Padding(
-            // padding: const EdgeInsets.all(8.0),
+            // padding: EdgeInsets.all(w * 20),
             padding: EdgeInsets.only(left: 200 * w, right: 200 * w),
             child: Container(
               width: double.infinity,
@@ -106,6 +106,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               // register button
+            ),
+          ),
+          SizedBox(
+            height: 55 * w,
+          ),
+          // button for register
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, "/register");
+            },
+            child: Container(
+              child: Center(child: Text("Register")),
             ),
           ),
           SizedBox(

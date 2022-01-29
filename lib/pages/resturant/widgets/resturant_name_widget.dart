@@ -6,10 +6,10 @@ import '../../../constants.dart';
 class ResturantNameWidget extends StatelessWidget {
   ResturantNameWidget({
     Key? key,
-    required this.name,
+    required this.resturant,
   }) : super(key: key);
 
-  var name;
+  var resturant;
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,14 @@ class ResturantNameWidget extends StatelessWidget {
             Expanded(
                 flex: 2,
                 child: Padding(
-                  // padding: EdgeInsets.only(top: 15 * w, bottom: 15 * w),
-                  padding: EdgeInsets.all(25 * w),
-                  child: Image(image: AssetImage("images/dominos.png")),
-                )),
+                    // padding: EdgeInsets.only(top: 15 * w, bottom: 15 * w),
+                    padding: EdgeInsets.all(25 * w),
+                    child: Image(image: NetworkImage(resturant.logo)))),
             Expanded(
               flex: 7,
               child: Center(
                 child: Text(
-                  name == null ? "Dominos Pizza" : name,
+                  resturant.name,
                   style: TextStyle(
                     fontSize: 45 * w,
                     fontWeight: FontWeight.w500,

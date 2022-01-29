@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants.dart';
+import './../../resturant/resturant_page.dart';
 
 // FIX this widget
 class resturantWidget extends StatelessWidget {
   resturantWidget({
     Key? key,
-    this.name,
-    this.logo,
+    this.resturant,
   }) : super(key: key);
 
-  var name = null;
-  var logo = null;
+  var resturant;
 
   @override
   Widget build(BuildContext context) {
+    print(resturant.logo);
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/resturant');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResturantPage(resturant),
+          ),
+        );
       },
       child: Padding(
         padding: EdgeInsets.only(
@@ -43,8 +48,7 @@ class resturantWidget extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(40 * w),
                   child: Image(
-                    image: AssetImage(
-                        this.logo == null ? "images/dominos.png" : logo),
+                    image: NetworkImage(resturant.logo),
                   ),
                 ),
               ),
@@ -71,9 +75,8 @@ class resturantWidget extends StatelessWidget {
                             ),
                           ]),
                       Text(
-                        name == null
-                            ? "Dominos Pizza"
-                            : name, // TODO add overflow handling, with 1 alowed line, maybe dotted overflow?
+                        resturant
+                            .name, // TODO add overflow handling, with 1 alowed line, maybe dotted overflow?
                         style: TextStyle(
                           fontSize: 45 * w,
                           fontWeight: FontWeight.w500,

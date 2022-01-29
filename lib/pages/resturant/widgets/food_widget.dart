@@ -1,17 +1,25 @@
 // DONE create foodWidget
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/food/food_page.dart';
 import '../../../constants.dart';
 
 class FoodWidget extends StatelessWidget {
-  var name;
-  var logo;
+  var foodObject;
+  // constructor
+  FoodWidget(this.foodObject);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/food');
+        // Navigator.pushNamed(context, '/food');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FoodPage(foodObject),
+          ),
+        );
       },
       child: Padding(
         padding: EdgeInsets.only(top: 25 * w, bottom: 25 * w),
@@ -34,13 +42,15 @@ class FoodWidget extends StatelessWidget {
               Expanded(
                 flex: 30,
                 child: Padding(
-                  padding: EdgeInsets.all(40 * w),
-                  child: Image(
-                    image: AssetImage(this.logo == null
-                        ? "images/pepperoni_pizza.png"
-                        : logo),
-                  ),
-                ),
+                    padding: EdgeInsets.all(52 * w),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(33 * w),
+                      ),
+                      child: Image(
+                        image: NetworkImage(foodObject.imageLink),
+                      ),
+                    )),
               ),
               Expanded(
                 flex: 37,
@@ -75,16 +85,15 @@ class FoodWidget extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        name == null
-                            ? "Pepperoni Pizza"
-                            : name, // TODO add overflow handling, with 1 alowed line, maybe dotted overflow?
+                        foodObject.name,
+                        // TODO add overflow handling, with 1 alowed line, maybe dotted overflow?
                         style: TextStyle(
                           fontSize: 45 * w,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
-                        "Mixed Pizza", // TODO replace with variable
+                        "Mixed Pizza",
                         style: TextStyle(
                             fontSize: 35 * w,
                             color: Colors.grey,
@@ -94,7 +103,8 @@ class FoodWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "\$8.50",
+                            "\$" +
+                                foodObject.foodMajorCategory[0].price, //8.50",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 50 * w),
                           ),

@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants.dart';
+import 'package:food_delivery/model/resturant.dart';
 import 'package:food_delivery/pages/home/widgets/food_type_widget.dart';
 import 'package:food_delivery/pages/home/widgets/resturant_widget.dart';
 import 'package:food_delivery/pages/home/widgets/search_widget.dart';
 import 'package:food_delivery/pages/home/widgets/top_bar.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as json;
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var listOfResturants = [];
+
+  initState() {
+    var response = http
+        .get(Uri.parse("https://food-del-app.herokuapp.com/restaurants"))
+        .then((response) {
+      setState(() {
+        listOfResturants = (json.jsonDecode(response.body) as List)
+            .map((data) => Resturant.fromJson(data))
+            .toList();
+      });
+      for (var i = 0; i < listOfResturants.length; i++) {
+        print(listOfResturants[i].name);
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,43 +54,10 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: MediaQuery.of(context).size.width * 9 / 100),
                   foodTypesListView(),
                   Column(
+                    // builder for resturants
                     children: [
-                      resturantWidget(),
-                      resturantWidget(
-                        name: "Pizza Hut",
-                        logo: "images/pizza_hut.png",
-                      ),
-                      resturantWidget(
-                        name: "KFC",
-                        logo: "images/kfc.png",
-                      ),
-                      resturantWidget(),
-                      resturantWidget(
-                        name: "Pizza Hut",
-                        logo: "images/pizza_hut.png",
-                      ),
-                      resturantWidget(
-                        name: "KFC",
-                        logo: "images/kfc.png",
-                      ),
-                      resturantWidget(),
-                      resturantWidget(
-                        name: "Pizza Hut",
-                        logo: "images/pizza_hut.png",
-                      ),
-                      resturantWidget(
-                        name: "KFC",
-                        logo: "images/kfc.png",
-                      ),
-                      resturantWidget(),
-                      resturantWidget(
-                        name: "Pizza Hut",
-                        logo: "images/pizza_hut.png",
-                      ),
-                      resturantWidget(
-                        name: "KFC",
-                        logo: "images/kfc.png",
-                      ),
+                      for (var i = 0; i < listOfResturants.length; i++)
+                        resturantWidget(resturant: listOfResturants[i]),
                     ],
                   ),
                 ],
