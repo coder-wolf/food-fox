@@ -1,4 +1,4 @@
-# FoodFox 🦊 - cause panda's got fat
+# FoodFox 🦊 - cause panda's gotten fat
 
 This is a university web course project.
 
