@@ -1,7 +1,12 @@
-# FoodFox - cause panda's got fat
+# FoodFox - cause panda's got fat 😜
 
-Backend of this project can be found [here](https://github.com/rumman9799/food_delivery_app_backEnd), contributed by [Rumman](https://github.com/rumman9799)
+This is a university web course project.
 
+Backend of this project can be found [here](https://github.com/rumman9799/food_delivery_app_backEnd),developed by [Sadib Hassan Rumman](https://github.com/rumman9799)
+
+Testing and QA was done by [Muhammad Rasel Reza](https://www.facebook.com/profile.php?id=100007431582572)
+
+<br>
 Instructions for running this project on local machine :
 Make sure, you have the flutter sdk and android sdk (for android version) or Xcode and ios emulator (for ios version) installed on your system.
 Web version is not ready yet. But you can run with a potrait browser window.
