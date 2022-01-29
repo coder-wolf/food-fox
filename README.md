@@ -1,11 +1,14 @@
 # FoodFox - cause panda's got fat
 
+Backend of this project can be found [here](https://github.com/rumman9799/food_delivery_app_backEnd), contributed by [Rumman](https://github.com/rumman9799)
+
 Instructions for running this project on local machine :
 Make sure, you have the flutter sdk and android sdk (for android version) or Xcode and ios emulator (for ios version) installed on your system.
 Web version is not ready yet. But you can run with a potrait browser window.
 
-Download flutter from [here](flutter.dev)
-Android sdk from [here](https://developer.android.com/studio)
+Required sdks for the projects:
+[flutter](flutter.dev) ,
+[Android sdk](https://developer.android.com/studio)
 
 Open up your prefered emulator.
 Then cd (change directory) on your terminal into the project directory of your computer.
