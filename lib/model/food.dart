@@ -1,82 +1,89 @@
-// To parse this JSON data, do
-//
-//     final food = foodFromJson(jsonString);
-
-import 'package:meta/meta.dart';
-import 'dart:convert';
-
-List<Food> foodFromJson(String str) => List<Food>.from(json.decode(str).map((x) => Food.fromJson(x)));
-
-String foodToJson(List<Food> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class Food {
-    Food({
-        required this.id,
-        required this.name,
-        required this.restaurantId,
-        required this.price,
-        required this.foodMajorCategory,
-        required this.rating,
-        required this.imageLink,
-        required this.v,
+  late String sId;
+  late String name;
+  late String restaurantId;
+  late String price;
+  late String generalType;
+  late List<FoodMajorCategory> foodMajorCategory;
+  late String rating;
+  late String imageLink;
+  late int iV;
+
+  Food(
+      {required this.sId,
+      required this.name,
+      required this.restaurantId,
+      required this.price,
+      required this.generalType,
+      required this.foodMajorCategory,
+      required this.rating,
+      required this.imageLink,
+      required this.iV});
+
+  Food.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    name = json['name'];
+    restaurantId = json['restaurant_id'];
+    price = json['price'];
+    generalType = json['generalType'];
+
+    foodMajorCategory = <FoodMajorCategory>[];
+    json['food_major_category'].forEach((v) {
+      foodMajorCategory.add(new FoodMajorCategory.fromJson(v));
     });
 
-    final String id;
-    final String name;
-    final String restaurantId;
-    final String price;
-    final List<FoodMajorCategory> foodMajorCategory;
-    final String rating;
-    final String imageLink;
-    final int v;
+    rating = json['rating'];
+    imageLink = json['image_link'];
+    iV = json['__v'];
+  }
 
-    factory Food.fromJson(Map<String, dynamic> json) => Food(
-        id: json["_id"],
-        name: json["name"],
-        restaurantId: json["restaurant_id"],
-        price: json["price"],
-        foodMajorCategory: List<FoodMajorCategory>.from(json["food_major_category"].map((x) => FoodMajorCategory.fromJson(x))),
-        rating: json["rating"],
-        imageLink: json["image_link"],
-        v: json["__v"],
-    );
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['_id'] = this.sId;
+    data['name'] = this.name;
+    data['restaurant_id'] = this.restaurantId;
+    data['price'] = this.price;
+    data['generalType'] = this.generalType;
+    data['food_major_category'] =
+        this.foodMajorCategory.map((v) => v.toJson()).toList();
 
-    Map<String, dynamic> toJson() => {
-        "_id": id,
-        "name": name,
-        "restaurant_id": restaurantId,
-        "price": price,
-        "food_major_category": List<dynamic>.from(foodMajorCategory.map((x) => x.toJson())),
-        "rating": rating,
-        "image_link": imageLink,
-        "__v": v,
-    };
+    data['rating'] = this.rating;
+    data['image_link'] = this.imageLink;
+    data['__v'] = this.iV;
+    return data;
+  }
 }
 
 class FoodMajorCategory {
-    FoodMajorCategory({
-        required this.size,
-        required this.weight,
-        required this.calories,
-        required this.ingredients,
-    });
+  late String size;
+  late String weight;
+  late String calories;
+  late String ingredients;
+  late String price;
 
-    final String size;
-    final String weight;
-    final String calories;
-    final String ingredients;
+  FoodMajorCategory({
+    required this.size,
+    required this.weight,
+    required this.calories,
+    required this.ingredients,
+    required this.price,
+  });
 
-    factory FoodMajorCategory.fromJson(Map<String, dynamic> json) => FoodMajorCategory(
-        size: json["size"],
-        weight: json["weight"],
-        calories: json["calories"],
-        ingredients: json["ingredients"],
-    );
+  FoodMajorCategory.fromJson(Map<String, dynamic> json) {
+    this.size = json['size'];
+    this.weight = json['weight'];
+    this.calories = json['calories'];
+    this.ingredients = json['ingredients'];
+    this.price = json['price'];
+  }
 
-    Map<String, dynamic> toJson() => {
-        "size": size,
-        "weight": weight,
-        "calories": calories,
-        "ingredients": ingredients,
-    };
+  Map<String, dynamic> toJson() {
+    late final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['size'] = this.size;
+    data['weight'] = this.weight;
+    data['calories'] = this.calories;
+    data['ingredients'] = this.ingredients;
+    data['price'] = this.price;
+    return data;
+  }
 }

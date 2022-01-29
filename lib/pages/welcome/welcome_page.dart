@@ -52,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushNamed(context, '/login');
                 },
                 child: Container(
                     height: (MediaQuery.of(context).size.width / 100) * 17,
