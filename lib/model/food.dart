@@ -9,16 +9,17 @@ class Food {
   late String imageLink;
   late int iV;
 
-  Food(
-      {required this.sId,
-      required this.name,
-      required this.restaurantId,
-      required this.price,
-      required this.generalType,
-      required this.foodMajorCategory,
-      required this.rating,
-      required this.imageLink,
-      required this.iV});
+  Food({
+    required this.sId,
+    required this.name,
+    required this.restaurantId,
+    required this.price,
+    required this.generalType,
+    required this.foodMajorCategory,
+    required this.rating,
+    required this.imageLink,
+    required this.iV,
+  });
 
   Food.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -26,7 +27,6 @@ class Food {
     restaurantId = json['restaurant_id'];
     price = json['price'];
     generalType = json['generalType'];
-
     foodMajorCategory = <FoodMajorCategory>[];
     json['food_major_category'].forEach((v) {
       foodMajorCategory.add(new FoodMajorCategory.fromJson(v));
@@ -44,9 +44,10 @@ class Food {
     data['restaurant_id'] = this.restaurantId;
     data['price'] = this.price;
     data['generalType'] = this.generalType;
-    data['food_major_category'] =
-        this.foodMajorCategory.map((v) => v.toJson()).toList();
-
+    if (this.foodMajorCategory != null) {
+      data['food_major_category'] =
+          this.foodMajorCategory.map((v) => v.toJson()).toList();
+    }
     data['rating'] = this.rating;
     data['image_link'] = this.imageLink;
     data['__v'] = this.iV;
@@ -70,15 +71,15 @@ class FoodMajorCategory {
   });
 
   FoodMajorCategory.fromJson(Map<String, dynamic> json) {
-    this.size = json['size'];
-    this.weight = json['weight'];
-    this.calories = json['calories'];
-    this.ingredients = json['ingredients'];
-    this.price = json['price'];
+    size = json['size'];
+    weight = json['weight'];
+    calories = json['calories'];
+    ingredients = json['ingredients'];
+    price = json['price'];
   }
 
   Map<String, dynamic> toJson() {
-    late final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['size'] = this.size;
     data['weight'] = this.weight;
     data['calories'] = this.calories;

@@ -56,7 +56,7 @@ class FoodPage extends StatelessWidget {
         ),
         title: Center(
           child: Text(
-            foodObject.name, //"Pepperoni Pizza",
+            foodObject.name!, //"Pepperoni Pizza",
             style: TextStyle(
               color: Colors.black,
               fontSize: 45 * w,
@@ -119,7 +119,7 @@ class FoodPage extends StatelessWidget {
                         topLeft: Radius.circular(
                             MediaQuery.of(context).size.width * (15 / 100))),
                     child: Image(
-                      image: NetworkImage(foodObject.imageLink),
+                      image: NetworkImage(foodObject.imageLink!),
                     ),
                   ),
                 ),
@@ -133,8 +133,8 @@ class FoodPage extends StatelessWidget {
                     Center(
                       child: Text(
                         foodObject
-                            .foodMajorCategory[0] // TODO replace 0 with index
-                            .ingredients, //"Salami, chilli papers, tomatoes,\n oregano, basil",
+                            .foodMajorCategory![0] // TODO replace 0 with index
+                            .ingredients!, //"Salami, chilli papers, tomatoes,\n oregano, basil",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.grey,
@@ -147,7 +147,7 @@ class FoodPage extends StatelessWidget {
                       height: 130 * w,
                     ),
                     Text(
-                      "\$" + foodObject.price,
+                      "\$" + foodObject.price!,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 73 * w,
@@ -158,7 +158,7 @@ class FoodPage extends StatelessWidget {
                     ),
                     SingleDetail(
                         title: "Calories",
-                        data: foodObject.foodMajorCategory[0]
+                        data: foodObject.foodMajorCategory![0]
                             .calories // TODO replace 0 with index
                         ),
                     SingleDetail(

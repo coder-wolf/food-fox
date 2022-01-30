@@ -104,7 +104,7 @@ class FoodWidget extends StatelessWidget {
                         children: [
                           Text(
                             "\$" +
-                                foodObject.foodMajorCategory[0].price, //8.50",
+                                foodObject.foodMajorCategory[0].price!, //8.50",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 50 * w),
                           ),
