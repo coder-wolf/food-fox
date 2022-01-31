@@ -2,7 +2,6 @@ import 'dart:convert' as json;
 
 import 'package:food_delivery/model/food.dart';
 import 'package:food_delivery/pages/resturant/widgets/food_widget.dart';
-
 import 'widgets/resturant_name_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constants.dart';
